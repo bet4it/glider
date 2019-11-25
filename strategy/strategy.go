@@ -147,7 +147,8 @@ func (p *Proxy) initAvailable() {
 		// no available forwarders, set priority to 0 to check all forwarders in check func
 		p.SetPriority(0)
 		log.F("[strategy] no available forwarders, just use: %s, please check your settings or network", p.fwdrs[0].Addr())
-		p.available = append(p.available, p.fwdrs[0])
+		p.available = append(p.available, p.fwdrs[len(p.fwdrs)-1])
+		p.fwdrs[len(p.fwdrs)-1].Enable()
 	}
 }
 
